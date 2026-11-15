@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#176b55">
+  <title>HamChat — دردشة بسيطة</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="/client.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">H</div>
+      <div>
+        <h1>HamChat</h1>
+        <p>دردشتك، ببساطة</p>
+      </div>
+      <span class="connection" id="connection-status">غير متصل</span>
+    </header>
+
+    <section class="panel join-panel" id="join-panel" aria-labelledby="welcome-title">
+      <div class="intro-icon" aria-hidden="true">✦</div>
+      <h2 id="welcome-title">أهلاً بك في HamChat</h2>
+      <p class="muted">اختر اسماً وغرفة وابدأ الحديث.</p>
+      <form id="join-form">
+        <label for="name-input">اسمك</label>
+        <input id="name-input" name="name" maxlength="24" autocomplete="nickname" placeholder="مثال: نور" required>
+        <label for="room-input">اسم الغرفة</label>
+        <input id="room-input" name="room" maxlength="32" value="عام" placeholder="مثال: عام" required>
+        <button class="primary-button" type="submit">دخول إلى الدردشة <span aria-hidden="true">←</span></button>
+      </form>
+      <p class="form-error" id="join-error" role="alert"></p>
+    </section>
+
+    <section class="panel chat-panel hidden" id="chat-panel" aria-label="الدردشة">
+      <div class="chat-heading">
+        <div>
+          <span class="eyebrow">أنت الآن في</span>
+          <h2># <span id="room-name">عام</span></h2>
+        </div>
+        <button class="text-button" id="change-room" type="button">تغيير الغرفة</button>
+      </div>
+      <ol class="messages" id="messages" aria-live="polite" aria-relevant="additions"></ol>
+      <form class="message-form" id="message-form">
+        <label class="visually-hidden" for="message-input">اكتب رسالتك</label>
+        <input id="message-input" maxlength="1000" autocomplete="off" placeholder="اكتب رسالة..." required>
+        <button class="send-button" type="submit" aria-label="إرسال الرسالة">إرسال</button>
+      </form>
+    </section>
+    <footer>HamChat · تواصل بلطف واحترام</footer>
+  </main>
+</body>
+</html>
