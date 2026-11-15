@@ -3,33 +3,36 @@
 build/
 .kotlin/
 
-# Local configuration file (sdk path, etc)
-local.properties
-
-# Log/OS Files
-*.log
-
-# Android Studio generated files and folders
+# Android Studio and IntelliJ
 captures/
 .externalNativeBuild/
 .cxx/
-*.aab
-*.apk
-output-metadata.json
-
-# IntelliJ
 *.iml
 .idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
 
-# Keystore files
+# Local configuration and secrets
+local.properties
+.env
+.env.*
+!.env.example
+
+# Logs and OS files
+*.log
+.DS_Store
+
+# Android packages and profiling
+*.aab
+*.apk
+*.hprof
+output-metadata.json
+
+# Signing keys and service credentials
 *.jks
 *.keystore
-
-# Google Services (e.g. APIs or Firebase)
 google-services.json
 
-# Android Profiling
-*.hprof
+# HamChat local data (accounts, sessions, and SQLite journal files)
+data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal

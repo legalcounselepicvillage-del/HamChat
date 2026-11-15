@@ -18,15 +18,41 @@
         <p>دردشتك، ببساطة</p>
       </div>
       <span class="connection" id="connection-status">غير متصل</span>
+      <button class="text-button logout-button hidden" id="logout-button" type="button">تسجيل الخروج</button>
     </header>
 
-    <section class="panel join-panel" id="join-panel" aria-labelledby="welcome-title">
+    <section class="panel join-panel auth-panel" id="auth-panel" aria-labelledby="welcome-title">
       <div class="intro-icon" aria-hidden="true">✦</div>
       <h2 id="welcome-title">أهلاً بك في HamChat</h2>
-      <p class="muted">اختر اسماً وغرفة وابدأ الحديث.</p>
+      <p class="muted">سجل الدخول أو أنشئ حساباً للانضمام إلى الدردشة.</p>
+      <div class="auth-tabs" role="tablist" aria-label="نوع الحساب">
+        <button class="auth-tab active" id="login-tab" type="button" role="tab" aria-selected="true">تسجيل الدخول</button>
+        <button class="auth-tab" id="register-tab" type="button" role="tab" aria-selected="false">إنشاء حساب</button>
+      </div>
+      <form id="login-form">
+        <label for="login-email">البريد الإلكتروني</label>
+        <input id="login-email" name="email" type="email" maxlength="254" autocomplete="email" placeholder="name@example.com" required>
+        <label for="login-password">كلمة المرور</label>
+        <input id="login-password" name="password" type="password" minlength="10" maxlength="72" autocomplete="current-password" required>
+        <button class="primary-button" type="submit">تسجيل الدخول <span aria-hidden="true">←</span></button>
+      </form>
+      <form id="register-form" class="hidden">
+        <label for="register-username">الاسم الظاهر</label>
+        <input id="register-username" name="username" minlength="2" maxlength="24" autocomplete="nickname" placeholder="مثال: نور" required>
+        <label for="register-email">البريد الإلكتروني</label>
+        <input id="register-email" name="email" type="email" maxlength="254" autocomplete="email" placeholder="name@example.com" required>
+        <label for="register-password">كلمة المرور <span class="label-hint">10 أحرف على الأقل</span></label>
+        <input id="register-password" name="password" type="password" minlength="10" maxlength="72" autocomplete="new-password" required>
+        <button class="primary-button" type="submit">إنشاء حساب <span aria-hidden="true">←</span></button>
+      </form>
+      <p class="form-error" id="auth-error" role="alert"></p>
+    </section>
+
+    <section class="panel join-panel hidden" id="join-panel" aria-labelledby="join-title">
+      <div class="intro-icon" aria-hidden="true">✦</div>
+      <h2 id="join-title">مرحباً <span id="welcome-name"></span></h2>
+      <p class="muted">اختر غرفة وابدأ الحديث.</p>
       <form id="join-form">
-        <label for="name-input">اسمك</label>
-        <input id="name-input" name="name" maxlength="24" autocomplete="nickname" placeholder="مثال: نور" required>
         <label for="room-input">اسم الغرفة</label>
         <input id="room-input" name="room" maxlength="32" value="عام" placeholder="مثال: عام" required>
         <button class="primary-button" type="submit">دخول إلى الدردشة <span aria-hidden="true">←</span></button>
